@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pastel · Obras & ODS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fcf4ed;
+    color: #3d2c2a;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 245, 235, 0.6);
+    border-radius: 3rem 3rem 2rem 2rem;
+    padding: 2rem 2rem 3rem;
+    box-shadow: 0 12px 30px rgba(180, 120, 100, 0.08);
+}
+
+:root {
+    --salmao: #fad4c0;
+    --rosa-claro: #fce4e4;
+    --laranja-claro: #fde3c8;
+    --vermelho-claro: #f7d4d4;
+}
+
+section {
+    margin-bottom: 4rem;
+    padding: 2rem 1.8rem;
+    border-radius: 2.5rem;
+    transition: background 0.2s;
+}
+
+.secao-obras {
+    background: linear-gradient(145deg, var(--salmao), var(--rosa-claro));
+    border: 1px solid rgba(255, 220, 200, 0.5);
+}
+
+.secao-ods {
+    background: linear-gradient(145deg, var(--laranja-claro), var(--vermelho-claro));
+    border: 1px solid rgba(240, 190, 170, 0.4);
+}
+.secao-npa {
+    background: linear-gradient(145deg, #fad8cc, #f7d0d0, #fadac0);
+    border: 1px solid rgba(230, 180, 160, 0.3);
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 2.1rem;
+    letter-spacing: -0.3px;
+    color: #4a3330;
+    margin-bottom: 1.8rem;
+    border-left: 8px solid #dbaa94;
+    padding-left: 1.2rem;
+    background: rgba(255, 245, 235, 0.4);
+    border-radius: 0 30px 30px 0;
+    display: inline-block;
+    padding-right: 2rem;
+}
+.secao-ods h2 {
+    border-left-color: #c28d7a;
+    background: rgba(250, 235, 220, 0.5);
+}
+.secao-npa h2 {
+    border-left-color: #ba8a7a;
+    background: rgba(250, 235, 225, 0.5);
+}
+/* ---------- BLOCO DE OBRA ---------- */
+.bloco-obra {
+    background: rgba(255, 248, 242, 0.7);
+    backdrop-filter: blur(2px);
+    border-radius: 2rem;
+    padding: 1.8rem 1.8rem 1.2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 6px 16px rgba(160, 110, 90, 0.08);
+    border: 1px solid rgba(255, 235, 220, 0.6);
+    transition: transform 0.15s;
+}
+.bloco-obra:hover {
+    transform: scale(1.005);
+    background: rgba(255, 250, 245, 0.8);
+}
+.grid-fotos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.campo-foto {
+    flex: 1 1 200px;
+    min-width: 160px;
+    background: rgba(255, 240, 230, 0.5);
+    border-radius: 1.5rem;
+    padding: 0.8rem 0.8rem 0.5rem;
+    text-align: center;
+    border: 2px dashed #dcb6a5;
+    transition: border 0.2s;
+}
+.campo-foto:hover {
+    border-color: #c4957e;
+}
+.campo-foto p {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6f4f42;
+    background: rgba(255, 235, 220, 0.5);
+    border-radius: 30px;
+    padding: 0.2rem 0.8rem;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+}
+
+.input-foto {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    border: 1px solid #dbb8a8;
+    background: rgba(255, 248, 242, 0.6);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.8rem;
+    color: #3d2c2a;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.input-foto:hover {
+    background: rgba(255, 240, 230, 0.8);
+    border-color: #b5826e;
+}
+
+.input-foto::file-selector-button {
+    background: rgba(200, 160, 145, 0.3);
+    border: none;
+    border-radius: 30px;
+    padding: 0.3rem 0.9rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    color: #4a3330;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.input-foto::file-selector-button:hover {
+    background: rgba(180, 140, 125, 0.4);
+}
+
+/* ---------- CAMPO DE DESCRIÇÃO APENAS LEITURA ---------- */
+.campo-descricao {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.descricao-texto {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 1.5rem;
+    border: 1px solid #dcb8a8;
+    background: rgba(255, 248, 242, 0.6);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95rem;
+    color: #3d2c2a;
+    min-height: 70px;
+    transition: 0.2s;
+    backdrop-filter: blur(2px);
+    cursor: default;
+    user-select: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.descricao-texto:empty::before {
+    content: "Clique aqui para escrever a descrição…";
+    color: #a98578;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.descricao-texto:focus {
+    outline: 2px solid #b5826e;
+    outline-offset: 2px;
+    background: rgba(255, 245, 235, 0.8);
+}
+/* ---------- ODS 12 ---------- */
+.ods-titulo {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #3d2824;
+    background: rgba(250, 235, 220, 0.5);
+    padding: 0.6rem 1.8rem;
+    border-radius: 60px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    border: 1px solid #dbbcac;
+    backdrop-filter: blur(2px);
+}
+
+.ods-descricao {
+    background: rgba(255, 248, 240, 0.55);
+    backdrop-filter: blur(2px);
+    border-radius: 2rem;
+    padding: 1.8rem 2rem;
+    line-height: 1.7;
+    font-size: 1.02rem;
+    border: 1px solid #e2c4b6;
+    max-height: 420px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    color: #2f221f;
+}
+
+.ods-descricao strong {
+    font-weight: 600;
+    color: #4d2e26;
+}
+
+/* ---------- NPA-ADC ---------- */
+.npa-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+.npa-participantes {
+    flex: 2 1 320px;
+}
+
+.npa-professores {
+    flex: 1 1 240px;
+    background: rgba(255, 240, 230, 0.3);
+    border-radius: 2rem;
+    padding: 1.2rem 1.5rem 1.5rem;
+    backdrop-filter: blur(2px);
+    border: 1px solid #dbb8a8;
+}
+
+.npa-participantes .bloco-obra {
+    background: rgba(255, 248, 240, 0.5);
+    padding: 1.2rem;
+}
+
+.npa-participantes .grid-fotos {
+    gap: 1rem;
+}
+
+.npa-participantes .campo-foto {
+    flex: 1 1 140px;
+    min-width: 120px;
+}
+
+.npa-professores h4 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #4a312c;
+    border-bottom: 2px dotted #cba392;
+    padding-bottom: 0.4rem;
+}
+
+.npa-professores .descricao-texto {
+    background: rgba(255, 248, 240, 0.4);
+    min-height: 80px;
+}
+
+.npa-professores .campo-foto {
+    background: rgba(255, 235, 220, 0.2);
+    border-color: #caad9d;
+    margin-top: 0.8rem;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 700px) {
+    .container {
+        padding: 1rem;
+    }
+    section {
+        padding: 1.2rem;
+    }
+    h2 {
+        font-size: 1.7rem;
+    }
+    .ods-titulo {
+        font-size: 1.4rem;
+        padding: 0.3rem 1rem;
+    }
+    .ods-descricao {
+        font-size: 0.95rem;
+        padding: 1.2rem;
+        max-height: 350px;
+    }
+}
+    </style>
+</head>
+<!-- Início do corpo visível da página -->
+<body>
+    <!-- Container principal que envolve todo o conteúdo -->
+    <div class="container">
+
+<!-- ========== PRIMEIRA SEÇÃO: SOBRE AS OBRAS ========== -->
+<!-- Início da seção destinada à apresentação das obras -->
+<section class="secao-obras">
+    <!-- Título principal da seção sobre as obras -->
+    <h2>🖌️ Sobre as obras</h2>
+    <!-- Bloco 1 -->
+    <!-- Primeiro bloco destinado a uma obra -->
+    <div class="sessão-foto-"></div>
+        <!-- Área que organiza as fotos em uma grade -->
+        <div class="grid-fotos">
+            <!-- Campo destinado à imagem do modelo -->
+            <div class="campo-foto">
+                <!-- Identificação do campo de imagem -->
+                <p>📷 Modelo </p>
+                <div align="justify"></div>
+                <figure>
+                    <figcaption>
+                    <img width="300" height="400" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                    </figcaption>
+                <div class="campo-descricao">
+                    <div class="descricao-texto" contenteditable="false">Aqui você pode colocar a descrição das imagens. Este texto não pode ser editado por outras pessoas.</div>
+                </div>
+            </div>
+                <!-- Permite ao usuário selecionar uma imagem do computador --> 
+            </div>
+            <!-- Campo destinado à imagem do croqui -->
+            <div class="campo-foto">
+                <!-- Identificação do campo de imagem -->
+                <p>📷 Modelo </p>
+                <div align="justify"></div>
+                <figure>
+                    <figcaption>
+                    <img width="300" height="400" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                    </figcaption>
+                <div class="campo-descricao">
+                    <div class="descricao-texto" contenteditable="false">Aqui você pode colocar a descrição das imagens. Este texto não pode ser editado por outras pessoas.</div>
+                </div>
+            </div>
+                <!-- Permite ao usuário selecionar uma imagem do computador --> 
+            </div>
+
+<!-- Bloco 2 -->
+    <!-- Primeiro bloco destinado a uma obra -->
+    <div class="sessão-foto-"></div>
+        <!-- Área que organiza as fotos em uma grade -->
+        <div class="grid-fotos">
+            <!-- Campo destinado à imagem do modelo -->
+            <div class="campo-foto">
+                <!-- Identificação do campo de imagem -->
+                <p>📷 Modelo </p>
+                <div align="justify"></div>
+                <figure>
+                    <figcaption>
+                    <img width="300" height="400" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                    </figcaption>
+                <div class="campo-descricao">
+                    <div class="descricao-texto" contenteditable="false">Aqui você pode colocar a descrição das imagens. Este texto não pode ser editado por outras pessoas.</div>
+                </div>
+            </div>
+                <!-- Permite ao usuário selecionar uma imagem do computador --> 
+            </div>
+            <!-- Campo destinado à imagem do croqui -->
+            <div class="campo-foto">
+                <!-- Identificação do campo de imagem -->
+                <p>📷 Modelo </p>
+                <div align="justify"></div>
+                <figure>
+                    <figcaption>
+                    <img width="300" height="400" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                    </figcaption>
+                <div class="campo-descricao">
+                    <div class="descricao-texto" contenteditable="false">Aqui você pode colocar a descrição das imagens. Este texto não pode ser editado por outras pessoas.</div>
+                </div>
+            </div>
+                <!-- Permite ao usuário selecionar uma imagem do computador --> 
+            </div>
+
+<!-- Bloco 3 -->
+    <!-- Primeiro bloco destinado a uma obra -->
+    <div class="sessão-foto-"></div>
+        <!-- Área que organiza as fotos em uma grade -->
+        <div class="grid-fotos">
+            <!-- Campo destinado à imagem do modelo -->
+            <div class="campo-foto">
+                <!-- Identificação do campo de imagem -->
+                <p>📷 Modelo </p>
+                <div align="justify"></div>
+                <figure>
+                    <figcaption>
+                    <img width="300" height="400" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                    </figcaption>
+                <div class="campo-descricao">
+                    <div class="descricao-texto" contenteditable="false">Aqui você pode colocar a descrição das imagens. Este texto não pode ser editado por outras pessoas.</div>
+                </div>
+            </div>
+                <!-- Permite ao usuário selecionar uma imagem do computador --> 
+            </div>
+            <!-- Campo destinado à imagem do croqui -->
+            <div class="campo-foto">
+                <!-- Identificação do campo de imagem -->
+                <p>📷 Modelo </p>
+                <div align="justify"></div>
+                <figure>
+                    <figcaption>
+                    <img width="300" height="400" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                    </figcaption>
+                <div class="campo-descricao">
+                    <div class="descricao-texto" contenteditable="false">Aqui você pode colocar a descrição das imagens. Este texto não pode ser editado por outras pessoas.</div>
+                </div>
+            </div>
+                <!-- Permite ao usuário selecionar uma imagem do computador --> 
+            </div>
+
+<!-- ========== SEGUNDA SEÇÃO: ODS 12 ========== -->
+<!-- Início da seção que apresenta informações sobre a ODS 12 -->
+<section class="secao-ods">
+    <!-- Título da seção sobre a ODS 12 -->
+    <h2>🌱 ODS 12</h2>
+    <!-- Subtítulo que apresenta o tema principal da ODS 12 -->
+    <div class="ods-titulo">Consumo e Produção Responsável: Garantir padrões de consumo e produção sustentável</div>
+    <!-- Área que contém todo o texto explicativo sobre a ODS 12 -->
+    <div class="ods-descricao">
+        <!-- Introdução destacada sobre a ODS 12 -->
+        <strong>A ODS 12 é o Objetivo de Desenvolvimento Sustentável número 12, parte da agenda da ONU para 2030. Seu título completo é:</strong>
+        <!-- Nome oficial da ODS 12 -->
+        
+        "Consumo e Produção Responsáveis".
+        <!-- Explicação geral sobre a importância da ODS 12 -->
+       
+        Enquanto muitos ODS focam em governos e grandes indústrias (como acabar com a fome ou garantir energia limpa), a ODS 12 é a mais pessoal e cotidiana de todas, pois depende diretamente das escolhas de cada um de nós no dia a dia.
+
+        <!-- Primeira pergunta e resposta sobre a ODS 12 -->
+        1. Qual é o grande problema que ela quer resolver?
+        Atualmente, o mundo consome mais recursos naturais do que o planeta consegue regenerar. Se continuarmos no ritmo atual, precisaríamos de quase 2 planetas Terra para sustentar nosso estilo de vida.
+
+        <!-- Explicação sobre economia linear e economia circular -->
+        A ODS 12 existe para quebrar a lógica do "usar, jogar fora e comprar outro" (a chamada economia linear) e substituí-la por uma economia circular (onde tudo que é produzido pode ser reaproveitado, reciclado ou tem durabilidade).
+
+        <!-- Segunda pergunta sobre as metas da ODS 12 -->
+        2. Quais são as principais metas da ODS 12 até 2030?
+        <!-- Introdução à lista de metas -->
+        A ONU definiu metas práticas, como:
+
+        <!-- Meta relacionada à redução do desperdício de alimentos -->
+        Reduzir pela metade o desperdício de alimentos per capita no mundo (tanto na produção quanto no varejo e no consumo doméstico).
+
+        <!-- Meta relacionada ao gerenciamento de produtos químicos e tóxicos -->
+        Gerir de forma sustentável os resíduos químicos e produtos tóxicos, reduzindo sua liberação no ar, na água e no solo.
+
+        <!-- Meta relacionada às empresas e práticas sustentáveis -->
+        Incentivar empresas a adotar práticas sustentáveis e publicar relatórios sobre seu impacto ambiental.
+
+        <!-- Meta relacionada às compras públicas sustentáveis -->
+        Promover compras públicas sustentáveis (governos dando exemplo ao comprar produtos ecológicos e duráveis).
+
+        <!-- Meta relacionada à conscientização da população -->
+        Garantir que as pessoas tenham informação sobre estilos de vida em harmonia com a natureza.
+
+        <!-- Meta relacionada à redução e reutilização dos resíduos -->
+        Reduzir a geração de resíduos por meio da prevenção, redução, reciclagem e reuso.
+
+        <!-- Terceira pergunta sobre a aplicação da ODS 12 no cotidiano -->
+        3. O que isso significa na prática no seu dia a dia?
+        <!-- Explicação sobre escolhas conscientes -->
+        A ODS 12 pede que você faça escolhas mais conscientes. Exemplos:
+
+        <!-- Exemplo relacionado à alimentação -->
+        Na alimentação: Comprar apenas o que vai consumir, evitar o desperdício de comida, aproveitar cascas e talos, e preferir produtos da estação e locais (que não viajaram milhares de quilômetros).
+
+        <!-- Exemplo relacionado às compras -->
+        Nas compras: Antes de comprar algo novo, perguntar: "Eu realmente preciso disso?". Preferir produtos duráveis, de marcas com certificação ambiental, e evitar itens com embalagens plásticas excessivas.
+
+        <!-- Exemplo relacionado ao descarte de resíduos -->
+        No lixo: Separar o lixo reciclável do orgânico, e levar eletrônicos e pilhas para pontos de coleta especiais.
+
+        <!-- Exemplo relacionado ao consumo de água e energia -->
+        No consumo de água e energia: Fechar a torneira ao escovar os dentes, tomar banhos mais curtos e apagar luzes ao sair de um cômodo.
+
+        <!-- Quarta pergunta sobre consumo e produção responsáveis -->
+        4. Qual a diferença entre "Consumo" e "Produção" nessa ODS?
+                <!-- Explicação de que a ODS atua nos dois lados -->
+                A ODS 12 atua nos dois lados da moeda:
+
+        <!-- Explicação sobre produção responsável -->
+        Produção Responsável (lado das empresas): Exige que as fábricas e agricultores poluam menos, usem energia renovável, paguem salários justos e projetem produtos que durem mais e sejam fáceis de consertar.
+
+        <!-- Explicação sobre consumo responsável -->
+        Consumo Responsável (lado nosso): Exige que, como consumidores, usemos nosso poder de compra para boicotar empresas irresponsáveis e premiar as que fazem a coisa certa, além de reduzir nosso próprio gasto de recursos.
+
+        <!-- Quinta pergunta sobre os indicadores da ODS -->
+        5. Qual é a "métrica" de sucesso dessa ODS?
+        <!-- Explicação sobre os indicadores utilizados para medir o progresso -->
+        A ONU usa indicadores como: a pegada ecológica per capita de cada país, a quantidade de lixo eletrônico gerado, o índice de reciclagem de materiais, e a taxa de desperdício de alimentos. O sucesso é quando esses números caem significativamente.
+
+        <!-- Sexta pergunta sobre a importância da ODS 12 -->
+        6. Por que ela é considerada "a mãe de todas as ODS"?
+        <!-- Explicação sobre a relação da ODS 12 com os demais objetivos -->
+        Porque ela conecta todas as outras. Se consumirmos e produzirmos de forma responsável, automaticamente:
+
+        <!-- Relação entre ODS 12 e ODS 13 -->
+        Ajudamos a ODS 13 (Ação contra o clima), pois emitimos menos carbono.
+
+        <!-- Relação entre ODS 12, ODS 14 e ODS 15 -->
+        Ajudamos a ODS 14 e 15 (Vida na água e na terra), pois geramos menos poluição e desmatamento.
+
+        <!-- Relação entre ODS 12 e ODS 3 -->
+        Ajudamos a ODS 3 (Saúde e bem-estar), pois diminuímos a exposição a produtos tóxicos.
+
+        <!-- Relação entre ODS 12 e ODS 8 -->
+        Ajudamos a ODS 8 (Trabalho decente), pois empresas sustentáveis geram empregos melhores.
+    </div>
+<!-- Fim da seção ODS 12 -->
+</section>
+
+<!-- ========== TERCEIRA SEÇÃO: NPA-ADC ========== -->
+<!-- Início da seção relacionada ao NPA-ADC -->
+<section class="secao-npa">
+<!-- Título da seção NPA-ADC -->
+<h2>🧵 NPA-ADC</h2>
+<!-- Grade destinada aos conteúdos do NPA-ADC -->
+<div class="npa-grid" ></div>
+<!-- Participantes -->
+<!-- Área destinada aos participantes do projeto -->
+<div class="npa-participantes">
+    <!-- Bloco que organiza as informações dos participantes -->
+    <div class="bloco-obra" style="margin-bottom: 1.8rem;">
+        <!-- Campo de foto -->
+           <!-- Participantes -->
+            <!-- Área interna dos participantes -->
+            <div class="npa-participantes">
+                <!-- Bloco destinado às fotos dos participantes -->
+                <div class="bloco-obra" style="margin-bottom: 1.8rem;">                    <div class="grid-fotos">
+                            <!-- Campo para a foto do participante 1 -->
+                            <div class="campo-foto">
+                                <!-- Identificação do participante 1 -->
+                                <p>👤 Participante 1</p>
+                            <!-- Campo para selecionar a foto do participante 1 -->
+                    <figure>
+                        <figcaption>
+                        <img width="200" height="200" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                        </figcaption>
+                    </figure>
+                        <!-- Campo para a foto do participante 2 -->
+                        <div class="campo-foto">
+                            <!-- Identificação do participante 2 -->
+                            <p>👤 Participante 2</p>
+                            <!-- Campo para selecionar a foto do participante 2 -->
+                    <figure>
+                        <figcaption>
+                        <img width="200" height="200" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                        </figcaption>
+                    </figure>
+                        <!-- Campo para a foto do participante 3 -->
+                        <div class="campo-foto">
+                            <!-- Identificação do participante 3 -->
+                            <p>👤 Participante 3</p>
+                            <!-- Campo para selecionar a foto do participante 3 -->
+                    <figure>
+                        <figcaption>
+                        <img width="200" height="200" alt="Exemplo do método GET no Postman" src="https://store-images.s-microsoft.com/image/apps.31125.14487600252661962.f6896eea-3342-4964-aef1-aa078c46d6d6.94b79f1f-5737-449a-85c3-a38156186e7c" />
+                        </figcaption>
+                    </figure>
+                        </div>
+                    </div>
+                    <!-- Área de descrição dos participantes -->
+                    <div class="campo-descricao">
+                        <!-- Texto fixo sobre as participantes -->
+                        <div class="descricao-texto" contenteditable="false">Descrição das participantes do NPA-ADC com a parceria da tecelagem. Texto fixo e não editável.</div>
+                    </div>
+                </div>
+            <!-- Duas fotos da tecelagem -->
+            <!-- Bloco destinado às imagens relacionadas à tecelagem -->
+            <div class="bloco-obra" style="background: rgba(255, 240, 228, 0.4);">
+                <!-- Área para organizar as imagens da tecelagem -->
+                <div class="grid-fotos">
+                    <!-- Primeiro campo de foto da tecelagem -->
+                    <div class="campo-foto">
+                        <!-- Identificação da primeira imagem -->
+                        <p>Laura </p>
+                        <!-- Campo para selecionar a imagem -->
+                        <input type="file" class="input-foto" accept="image/*" />
+                    </div>
+                    <!-- Segundo campo de foto da tecelagem -->
+                    <div class="campo-foto">
+                <!-- Área de descrição das imagens da tecelagem -->
+                <div class="campo-descricao">
+                    <!-- Texto fixo sobre a parceria com a tecelagem -->
+                    <div class="descricao-texto" contenteditable="false">Descrição das imagens da parceria com a tecelagem. Este texto não pode ser alterado.</div>
+                </div>
+            </div>
+        </div>
+        <!-- Professores -->
+        <!-- Área destinada às informações dos professores -->
+        <div class="npa-professores">
+            <!-- Título da área dos professores -->
+            <h4>👩‍🏫 Professores</h4>
+            <!-- Campo para a foto do primeiro professor -->
+            <div class="campo-foto" style="margin-bottom: 0.8rem;">
+                <!-- Identificação do primeiro professor -->
+                <p>📸 Professor(a) 1</p>
+                <!-- Campo para selecionar a foto -->
+                <input type="file" class="input-foto" accept="image/*" />
+            </div>
+            <!-- Campo para a foto do segundo professor -->
+            <div class="campo-foto" style="margin-bottom: 1rem;">
+                <!-- Identificação do segundo professor -->
+                <p>📸 Professor(a) 2</p>
+                <!-- Campo para selecionar a foto -->
+                <input type="file" class="input-foto" accept="image/*" />
+            </div>
+            <!-- Área para a descrição dos professores -->
+            <div class="campo-descricao">
+                <!-- Texto fixo sobre a atuação dos professores -->
+                <div class="descricao-texto" contenteditable="false">Descrição sobre os professores e sua atuação no NPA-ADC. Texto apenas para leitura.</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== SEGUNDA SEÇÃO: ODS 12 ========== -->
+<!-- Início de uma segunda seção sobre ODS 12 -->
+<section class="secao-ods">
+        <!-- Título da seção. Atualmente contém apenas o texto "Pro" -->
+        <h2>Doação de Caminhas de Cachorro</h2>
+        <!-- Subtítulo da seção -->
+        <div class="ods-titulo">Consumo e Produção Responsável: Garantir padrões de consumo e produção sustentável</div>
+        <!-- Área com o conteúdo explicativo da ODS 12 -->
+        <div class="ods-descricao">
+            <!-- Introdução sobre a ODS 12 -->
+            <strong>A ODS 12 é o Objetivo de Desenvolvimento Sustentável número 12, parte da agenda da ONU para 2030. Seu título completo é:</strong>
+            <!-- Nome da ODS -->
+           
+        </div>
+    <!-- Fim da segunda seção ODS 12 -->
+    </section>
+<!-- Fim do container principal -->
+</div>
+<!-- Fim do corpo da página -->
+</body>
+<!-- Fim do documento HTML -->
+</html>
